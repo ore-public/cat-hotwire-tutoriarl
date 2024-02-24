@@ -1,0 +1,17 @@
+default: &default
+  adapter: mysql2
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+development:
+  <<: *default
+  database: cat_hotwire_development
+  username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'root' %>
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
+  host: <%= ENV['RAILS_DATABASE_HOST'] || 'localhost' %>
+  port: <%= ENV['RAILS_DATABASE_PORT'] || 3306 %>
+
+production:
+  <<: *default
+  database: cat_hotwire_production
+  username: cat_hotwire
+  password: <%= ENV["CAT_HOTWIRE_DATABASE_PASSWORD"] %>
